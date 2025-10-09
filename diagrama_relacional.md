@@ -6,17 +6,17 @@ erDiagram
         uuid id PK
         string nombre
         string apellido
-        string correo UNQ
+        string correo "UNQ"
         string telefono
         string password_hash
         boolean activo
-        uuid rol_id FK
+        uuid rol_id
         timestamp creado_en
         timestamp actualizado_en
     }
     ROLES {
         uuid id PK
-        string nombre UNQ
+        string nombre "UNQ"
         string descripcion
     }
     GIMNASIO_CONFIGURACION {
@@ -29,18 +29,18 @@ erDiagram
         string color_acento
         string color_fondo
         string color_texto
-        uuid idioma_predeterminado_id FK
+        uuid idioma_predeterminado_id
         timestamp actualizado_en
     }
     IDIOMAS {
         uuid id PK
-        string codigo UNQ
+        string codigo "UNQ"
         string nombre
         boolean activo
     }
     DICCIONARIO_TRADUCCIONES {
         uuid id PK
-        uuid idioma_id FK
+        uuid idioma_id
         string clave
         string valor
         timestamp actualizado_en
@@ -50,7 +50,7 @@ erDiagram
         string nombre
         string apellidos
         string telefono
-        string correo UNQ
+        string correo "UNQ"
         string direccion
         date fecha_nacimiento
         string contacto_emergencia_nombre
@@ -69,14 +69,14 @@ erDiagram
         decimal precio
         boolean requiere_recordatorio
         integer dias_anticipacion_recordatorio
-        uuid idioma_id FK
+        uuid idioma_id
         timestamp creado_en
         timestamp actualizado_en
     }
     CLIENTE_MEMBRESIAS {
         uuid id PK
-        uuid cliente_id FK
-        uuid membresia_id FK
+        uuid cliente_id
+        uuid membresia_id
         date fecha_inicio
         date fecha_fin
         string estado
@@ -86,7 +86,7 @@ erDiagram
     }
     PAGOS {
         uuid id PK
-        uuid cliente_membresia_id FK
+        uuid cliente_membresia_id
         decimal monto
         string moneda
         string metodo_pago
@@ -94,40 +94,40 @@ erDiagram
         string estado
         timestamp pagado_en
         timestamp registrado_en
-        uuid registrado_por_usuario_id FK
+        uuid registrado_por_usuario_id
     }
     CODIGOS_DIARIOS {
         uuid id PK
-        date fecha UNQ
+        date fecha "UNQ"
         string codigo
         timestamp generado_en
-        uuid regenerado_por_usuario_id FK
+        uuid regenerado_por_usuario_id
     }
     ASISTENCIAS {
         uuid id PK
-        uuid cliente_id FK
-        uuid codigo_diario_id FK
+        uuid cliente_id
+        uuid codigo_diario_id
         timestamp hora_entrada
         boolean registrada_manual
-        uuid registrado_por_usuario_id FK
+        uuid registrado_por_usuario_id
     }
     CHECKLISTS_DIARIOS {
         uuid id PK
-        uuid cliente_id FK
+        uuid cliente_id
         date fecha
         string estado
         timestamp creado_en
     }
     CHECKLIST_ITEMS {
         uuid id PK
-        uuid checklist_diario_id FK
+        uuid checklist_diario_id
         string descripcion
         boolean completado
         timestamp completado_en
     }
     RECORDATORIOS {
         uuid id PK
-        uuid cliente_membresia_id FK
+        uuid cliente_membresia_id
         string canal
         string asunto
         string contenido
@@ -137,7 +137,7 @@ erDiagram
     }
     NOTIFICACIONES_PUSH {
         uuid id PK
-        uuid cliente_id FK
+        uuid cliente_id
         string titulo
         string mensaje
         string data_json
@@ -146,7 +146,7 @@ erDiagram
     }
     AUDITORIAS {
         uuid id PK
-        uuid usuario_id FK
+        uuid usuario_id
         string entidad
         uuid entidad_id
         string accion
