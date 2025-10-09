@@ -1,0 +1,172 @@
+# Diagrama Relacional - Plataforma de Gestión de Gimnasio
+
+```mermaid
+erDiagram
+    USUARIOS {
+        uuid id PK
+        string nombre
+        string apellido
+        string correo UNQ
+        string telefono
+        string password_hash
+        boolean activo
+        uuid rol_id FK
+        timestamp creado_en
+        timestamp actualizado_en
+    }
+    ROLES {
+        uuid id PK
+        string nombre UNQ
+        string descripcion
+    }
+    GIMNASIO_CONFIGURACION {
+        uuid id PK
+        string nombre_gimnasio
+        string logo_url
+        string imagen_portada_url
+        string color_primario
+        string color_secundario
+        string color_acento
+        string color_fondo
+        string color_texto
+        uuid idioma_predeterminado_id FK
+        timestamp actualizado_en
+    }
+    IDIOMAS {
+        uuid id PK
+        string codigo UNQ
+        string nombre
+        boolean activo
+    }
+    DICCIONARIO_TRADUCCIONES {
+        uuid id PK
+        uuid idioma_id FK
+        string clave
+        string valor
+        timestamp actualizado_en
+    }
+    CLIENTES {
+        uuid id PK
+        string nombre
+        string apellidos
+        string telefono
+        string correo UNQ
+        string direccion
+        date fecha_nacimiento
+        string contacto_emergencia_nombre
+        string contacto_emergencia_telefono
+        string foto_perfil_url
+        boolean activo
+        timestamp creado_en
+        timestamp actualizado_en
+    }
+    MEMBRESIAS {
+        uuid id PK
+        string nombre
+        string tipo_plan
+        string descripcion
+        integer duracion_dias
+        decimal precio
+        boolean requiere_recordatorio
+        integer dias_anticipacion_recordatorio
+        uuid idioma_id FK
+        timestamp creado_en
+        timestamp actualizado_en
+    }
+    CLIENTE_MEMBRESIAS {
+        uuid id PK
+        uuid cliente_id FK
+        uuid membresia_id FK
+        date fecha_inicio
+        date fecha_fin
+        string estado
+        string codigo_qr_actual
+        timestamp creado_en
+        timestamp actualizado_en
+    }
+    PAGOS {
+        uuid id PK
+        uuid cliente_membresia_id FK
+        decimal monto
+        string moneda
+        string metodo_pago
+        string referencia_externa
+        string estado
+        timestamp pagado_en
+        timestamp registrado_en
+        uuid registrado_por_usuario_id FK
+    }
+    CODIGOS_DIARIOS {
+        uuid id PK
+        date fecha UNQ
+        string codigo
+        timestamp generado_en
+        uuid regenerado_por_usuario_id FK
+    }
+    ASISTENCIAS {
+        uuid id PK
+        uuid cliente_id FK
+        uuid codigo_diario_id FK
+        timestamp hora_entrada
+        boolean registrada_manual
+        uuid registrado_por_usuario_id FK
+    }
+    CHECKLISTS_DIARIOS {
+        uuid id PK
+        uuid cliente_id FK
+        date fecha
+        string estado
+        timestamp creado_en
+    }
+    CHECKLIST_ITEMS {
+        uuid id PK
+        uuid checklist_diario_id FK
+        string descripcion
+        boolean completado
+        timestamp completado_en
+    }
+    RECORDATORIOS {
+        uuid id PK
+        uuid cliente_membresia_id FK
+        string canal
+        string asunto
+        string contenido
+        timestamp programado_en
+        timestamp enviado_en
+        string estado
+    }
+    NOTIFICACIONES_PUSH {
+        uuid id PK
+        uuid cliente_id FK
+        string titulo
+        string mensaje
+        string data_json
+        timestamp enviado_en
+        string estado
+    }
+    AUDITORIAS {
+        uuid id PK
+        uuid usuario_id FK
+        string entidad
+        uuid entidad_id
+        string accion
+        json cambios
+        timestamp realizado_en
+    }
+
+    ROLES ||--o{ USUARIOS : asigna
+    IDIOMAS ||--o{ GIMNASIO_CONFIGURACION : "se usa como predeterminado"
+    IDIOMAS ||--o{ DICCIONARIO_TRADUCCIONES : "contiene"
+    CLIENTES ||--o{ CLIENTE_MEMBRESIAS : posee
+    MEMBRESIAS ||--o{ CLIENTE_MEMBRESIAS : define
+    CLIENTE_MEMBRESIAS ||--o{ PAGOS : "genera"
+    CLIENTE_MEMBRESIAS ||--o{ RECORDATORIOS : "programa"
+    CLIENTES ||--o{ ASISTENCIAS : registra
+    CODIGOS_DIARIOS ||--o{ ASISTENCIAS : valida
+    USUARIOS ||--o{ ASISTENCIAS : "registra manualmente"
+    USUARIOS ||--o{ PAGOS : "confirma"
+    CLIENTES ||--o{ CHECKLISTS_DIARIOS : "completa"
+    CHECKLISTS_DIARIOS ||--o{ CHECKLIST_ITEMS : "incluye"
+    CLIENTES ||--o{ NOTIFICACIONES_PUSH : recibe
+    USUARIOS ||--o{ AUDITORIAS : realiza
+```
