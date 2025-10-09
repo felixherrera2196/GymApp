@@ -5,12 +5,15 @@ erDiagram
     USUARIOS {
         uuid id PK
         string nombre
-        string apellido
+        string apellido_paterno
+        string apellido_materno
         string correo "UNQ"
         string telefono
         string password_hash
         boolean activo
         uuid rol_id
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp creado_en
         timestamp actualizado_en
     }
@@ -18,6 +21,9 @@ erDiagram
         uuid id PK
         string nombre "UNQ"
         string descripcion
+        boolean activo
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     GIMNASIO_CONFIGURACION {
         uuid id PK
@@ -30,6 +36,8 @@ erDiagram
         string color_fondo
         string color_texto
         uuid idioma_predeterminado_id
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp actualizado_en
     }
     IDIOMAS {
@@ -37,18 +45,23 @@ erDiagram
         string codigo "UNQ"
         string nombre
         boolean activo
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     DICCIONARIO_TRADUCCIONES {
         uuid id PK
         uuid idioma_id
         string clave
         string valor
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp actualizado_en
     }
     CLIENTES {
         uuid id PK
         string nombre
-        string apellidos
+        string apellido_paterno
+        string apellido_materno
         string telefono
         string correo "UNQ"
         string direccion
@@ -57,6 +70,8 @@ erDiagram
         string contacto_emergencia_telefono
         string foto_perfil_url
         boolean activo
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp creado_en
         timestamp actualizado_en
     }
@@ -70,6 +85,9 @@ erDiagram
         boolean requiere_recordatorio
         integer dias_anticipacion_recordatorio
         uuid idioma_id
+        boolean activo
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp creado_en
         timestamp actualizado_en
     }
@@ -81,6 +99,8 @@ erDiagram
         date fecha_fin
         string estado
         string codigo_qr_actual
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp creado_en
         timestamp actualizado_en
     }
@@ -95,6 +115,8 @@ erDiagram
         timestamp pagado_en
         timestamp registrado_en
         uuid registrado_por_usuario_id
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     CODIGOS_DIARIOS {
         uuid id PK
@@ -102,6 +124,8 @@ erDiagram
         string codigo
         timestamp generado_en
         uuid regenerado_por_usuario_id
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     ASISTENCIAS {
         uuid id PK
@@ -110,12 +134,16 @@ erDiagram
         timestamp hora_entrada
         boolean registrada_manual
         uuid registrado_por_usuario_id
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     CHECKLISTS_DIARIOS {
         uuid id PK
         uuid cliente_id
         date fecha
         string estado
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
         timestamp creado_en
     }
     CHECKLIST_ITEMS {
@@ -124,6 +152,8 @@ erDiagram
         string descripcion
         boolean completado
         timestamp completado_en
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     RECORDATORIOS {
         uuid id PK
@@ -134,6 +164,8 @@ erDiagram
         timestamp programado_en
         timestamp enviado_en
         string estado
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     NOTIFICACIONES_PUSH {
         uuid id PK
@@ -143,6 +175,8 @@ erDiagram
         string data_json
         timestamp enviado_en
         string estado
+        uuid creado_por_usuario_id
+        uuid actualizado_por_usuario_id
     }
     AUDITORIAS {
         uuid id PK
