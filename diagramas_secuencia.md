@@ -19,7 +19,6 @@ sequenceDiagram
     Backend->>S3: Almacenar fotografía de perfil
     alt Carga de fotografía exitosa
         S3-->>Backend: Confirmación de carga
-        Backend->>DB: Registrar auditoría del alta
         DB-->>Backend: Confirmación de guardado
         Backend-->>Panel: Cliente creado correctamente
         Panel-->>Administrador: Mostrar cliente en listado
@@ -45,7 +44,6 @@ sequenceDiagram
     Cliente->>App: Modificar información y guardar cambios
     App->>Backend: Enviar actualización del perfil
     Backend->>DB: Actualizar datos del cliente
-    Backend->>DB: Registrar auditoría de modificación
     DB-->>Backend: Confirmaciones de guardado
     Backend-->>App: Confirmar actualización exitosa
     App-->>Cliente: Mostrar mensaje de éxito
@@ -72,7 +70,7 @@ sequenceDiagram
     Backend->>DB: Guardar o actualizar membresía
     Administrador->>Panel: Indicar forma de pago y marcar completado
     Panel->>Backend: Registrar pago manual
-    Backend->>DB: Actualizar estatus de pago y auditoría
+    Backend->>DB: Actualizar estatus de pago
     DB-->>Backend: Confirmación de actualización
     Backend-->>Panel: Notificar membresía actualizada
     Panel-->>Administrador: Mostrar confirmación
@@ -102,7 +100,6 @@ sequenceDiagram
     Stripe->>Backend: Enviar resultado del procesamiento
     alt Pago aprobado
         Backend->>DB: Actualizar estatus de membresía
-        Backend->>DB: Registrar auditoría del pago
         DB-->>Backend: Confirmaciones de guardado
         Backend-->>App: Notificar pago aprobado
         App-->>Cliente: Mostrar confirmación y enviar comprobante

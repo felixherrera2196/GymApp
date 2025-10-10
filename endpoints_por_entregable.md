@@ -3,7 +3,7 @@
 A continuación se listan los endpoints REST propuestos para el backend de GymApp, organizados en entregables incrementales. Cada grupo describe el objetivo funcional del bloque y los recursos involucrados.
 
 ## Entregable 1: Autenticación y gestión básica de usuarios administrativos
-Este entregable habilita la infraestructura mínima de seguridad para que administradores y recepcionistas puedan acceder al panel, manteniendo los roles diferenciados y auditables.
+Este entregable habilita la infraestructura mínima de seguridad para que administradores y recepcionistas puedan acceder al panel, manteniendo los roles diferenciados.
 
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
@@ -15,7 +15,6 @@ Este entregable habilita la infraestructura mínima de seguridad para que admini
 | POST | `/admin/users` | Crea un usuario administrativo (solo rol administrador). |
 | PATCH | `/admin/users/{user_id}` | Actualiza datos y rol de un usuario administrativo. |
 | DELETE | `/admin/users/{user_id}` | Realiza borrado lógico de un usuario administrativo. |
-| GET | `/admin/audit-logs` | Consulta los eventos de auditoría generados por acciones administrativas. |
 
 ## Entregable 2: Gestión de clientes y perfiles
 Establece los recursos para registrar clientes, almacenar su información completa y permitir que cada uno administre su perfil desde la aplicación móvil.

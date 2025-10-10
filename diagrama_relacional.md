@@ -178,15 +178,6 @@ erDiagram
         uuid creado_por_usuario_id
         uuid actualizado_por_usuario_id
     }
-    AUDITORIAS {
-        uuid id PK
-        uuid usuario_id
-        string entidad
-        uuid entidad_id
-        string accion
-        json cambios
-        timestamp realizado_en
-    }
 
     ROLES ||--o{ USUARIOS : asigna
     IDIOMAS ||--o{ GIMNASIO_CONFIGURACION : "se usa como predeterminado"
@@ -202,5 +193,4 @@ erDiagram
     CLIENTES ||--o{ CHECKLISTS_DIARIOS : "completa"
     CHECKLISTS_DIARIOS ||--o{ CHECKLIST_ITEMS : "incluye"
     CLIENTES ||--o{ NOTIFICACIONES_PUSH : recibe
-    USUARIOS ||--o{ AUDITORIAS : realiza
 ```

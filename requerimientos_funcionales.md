@@ -29,7 +29,6 @@
 
 ## 5. Backend y Base de Datos
 - RF-5.1 El backend debe exponer APIs para la gestión de clientes, membresías, pagos, asistencia, recordatorios y configuración de branding.
-- RF-5.2 El sistema debe almacenar auditorías registrando fecha, hora y usuario responsable de cada alta, modificación o eliminación, y conservar los registros mediante borrado lógico.
 
 ## 6. Aplicación Móvil (Clientes)
 - RF-6.1 La app móvil debe permitir a los clientes registrarse, iniciar sesión y actualizar sus datos.

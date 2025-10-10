@@ -10,7 +10,7 @@
   2. El sistema solicita los datos obligatorios del cliente (nombre, apellidos, teléfono, correo electrónico, dirección, fecha de nacimiento y contacto de emergencia).
   3. El administrador adjunta la fotografía de perfil del cliente.
   4. El administrador confirma el registro.
-  5. El sistema almacena la información en la base de datos, registra la auditoría y asocia la imagen en el bucket S3.
+  5. El sistema almacena la información en la base de datos y asocia la imagen en el bucket S3.
   6. El sistema muestra el nuevo cliente en el listado general.
 - **Flujos alternos/excepciones:**
   - 5a. Si la fotografía no puede almacenarse en S3, el sistema muestra un mensaje de error y permite reintentar la carga.
@@ -20,13 +20,13 @@
 - **Actor principal:** Cliente del gimnasio.
 - **Interesados y objetivos:** El cliente desea mantener actualizada su información personal para recibir notificaciones y mantener vigente su membresía.
 - **Precondiciones:** El cliente cuenta con una membresía válida, ha iniciado sesión en la app móvil y dispone de conexión a internet.
-- **Postcondiciones:** Los datos del cliente quedan actualizados y el sistema registra la auditoría correspondiente.
+- **Postcondiciones:** Los datos del cliente quedan actualizados en la base de datos.
 - **Flujo principal:**
   1. El cliente abre la aplicación móvil e ingresa al apartado "Mi perfil".
   2. El sistema muestra los datos actuales del cliente.
   3. El cliente modifica la información deseada (datos personales, contacto de emergencia o fotografía).
   4. El cliente guarda los cambios.
-  5. El sistema envía la actualización al backend, almacena los datos y registra la auditoría.
+  5. El sistema envía la actualización al backend y almacena los datos.
   6. El sistema confirma la actualización exitosa en la app.
 - **Flujos alternos/excepciones:**
   - 5a. Si se pierde la conexión durante la actualización, la app muestra un error y permite reintentar.
@@ -42,7 +42,7 @@
   2. El sistema muestra las membresías existentes y el estado de cada cliente.
   3. El administrador crea una nueva membresía o edita una existente seleccionando el tipo de plan y duración.
   4. El administrador indica la forma de pago (efectivo o transferencia) y marca el pago como completado.
-  5. El sistema actualiza el estatus de la membresía, registra la auditoría y muestra la confirmación.
+  5. El sistema actualiza el estatus de la membresía y muestra la confirmación.
 - **Flujos alternos/excepciones:**
   - 4a. Si el administrador no marca el pago como completado, el sistema mantiene el estatus pendiente y genera un recordatorio.
   - 3a. Si se selecciona un plan con fechas superpuestas, el sistema alerta y solicita ajustar la vigencia.
@@ -58,7 +58,7 @@
   3. El cliente elige la opción "Pagar con tarjeta".
   4. El sistema redirige al flujo de pago con Stripe y solicita los datos de la tarjeta.
   5. Stripe procesa el pago y devuelve la confirmación al backend.
-  6. El backend actualiza el estatus de la membresía a pagada y registra la auditoría.
+  6. El backend actualiza el estatus de la membresía a pagada.
   7. La app muestra un mensaje de confirmación y envía un comprobante por correo electrónico.
 - **Flujos alternos/excepciones:**
   - 5a. Si Stripe rechaza el pago, la app informa el motivo y permite reintentar con otro método.

@@ -110,10 +110,6 @@ Se utilizará autenticación basada en JWT.
 
 Se estima un máximo de 200 usuarios por día y hasta 20 usuarios concurrentes.
 
-**¿Hay requerimientos específicos de auditoría o registro de eventos?**
-
-Se debe registrar fecha, hora y usuario responsable en cada alta, modificación o eliminación, además de implementar borrado lógico.
-
 ## Frontend Móvil para Clientes
 
 **¿Qué funcionalidades adicionales desea el cliente en la app móvil (ver historial de asistencias, renovar membresía, etc.)?**

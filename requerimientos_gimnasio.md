@@ -34,7 +34,6 @@
 2. ¿Se necesita exponer APIs adicionales para integraciones con terceros?
 3. ¿Qué políticas de seguridad y autenticación se requieren (JWT, OAuth, 2FA)?
 4. ¿Qué volumen de usuarios y asistencias se estima para dimensionar la infraestructura?
-5. ¿Hay requerimientos específicos de auditoría o registro de eventos?
 
 ## Frontend Móvil para Clientes
 1. ¿Qué funcionalidades adicionales desea el cliente en la app móvil (ver historial de asistencias, renovar membresía, etc.)?
