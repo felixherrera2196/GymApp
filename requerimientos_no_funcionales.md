@@ -12,8 +12,7 @@
 ## 3. Seguridad
 - RNF-3.1 El backend debe implementar autenticación basada en JWT para el acceso a las APIs.
 - RNF-3.2 Los roles de Administrador y Recepcionista deben tener permisos diferenciados, asegurando que solo el administrador posea privilegios totales.
-- RNF-3.3 El sistema debe conservar auditorías de operaciones (fecha, hora y usuario) y aplicar borrado lógico para preservar la trazabilidad.
-- RNF-3.4 Los datos sensibles, incluidas las fotografías de perfil almacenadas en S3 y la información de pago procesada por Stripe, deben transmitirse mediante canales seguros (HTTPS).
+- RNF-3.3 Los datos sensibles, incluidas las fotografías de perfil almacenadas en S3 y la información de pago procesada por Stripe, deben transmitirse mediante canales seguros (HTTPS).
 
 ## 4. Disponibilidad y Recuperación
 - RNF-4.1 El sistema no requiere niveles especiales de disponibilidad en esta fase, pero debe garantizar la continuidad básica del servicio durante el horario operativo del gimnasio.
